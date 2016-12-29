@@ -1,2 +1,9 @@
 .idea
 node_modules
+npm-debug.log
+src/**/*.js
+src/**/*.js.map
+config/api-urls-conf.js
+config/api-urls-conf.js.map
+config/config.js
+config/config.js.map

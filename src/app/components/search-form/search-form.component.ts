@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import Payload from '../../models/Payload';
+import Payload from '../../models/payload';
 
 @Component({
   selector: 'search-form',
