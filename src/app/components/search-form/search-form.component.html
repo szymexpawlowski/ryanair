@@ -1,0 +1,24 @@
+<div class="container">
+  <div>{{diagnostic}}</div>
+  <form>
+    <div class="form-group">
+      <label for="from">From</label>
+      <input type="text" [(ngModel)]="payload.from" class="form-control" id="from" name="from" required>
+    </div>
+    <div class="form-group">
+      <label for="to">To</label>
+      <input type="text" [(ngModel)]="payload.to" class="form-control" id="to" name="to" required>
+    </div>
+
+    <div class="form-group">
+      <label for="startDate">Start Date</label>
+      <input type="text" [(ngModel)]="payload.startDate" class="form-control" id="startDate" name="startDate" required>
+    </div>
+    <div class="form-group">
+      <label for="endDate">End Date</label>
+      <input type="text" [(ngModel)]="payload.endDate" class="form-control" id="endDate" name="endDate" required>
+    </div>
+
+    <button type="submit" class="btn btn-default">Submit</button>
+  </form>
+</div>
