@@ -15,7 +15,7 @@ export class AirportsActions {
   fetch(): void {
     this.ngRedux.dispatch({ type: AirportsActions.REQUEST_AIRPORTS });
     this.airportsService.fetch().subscribe((airports: Airport[]) => {
-      this.ngRedux.dispatch({ type: AirportsActions.RECEIVE_AIRPORTS, payload: airports});
+      this.ngRedux.dispatch({ type: AirportsActions.RECEIVE_AIRPORTS, payload: {airports}});
     });
   }
 }

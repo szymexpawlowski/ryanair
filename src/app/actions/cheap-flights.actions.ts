@@ -15,7 +15,7 @@ export class CheapFlightsActions {
   fetch(from: string, to: string, startDate: string, endDate: string): void {
     this.ngRedux.dispatch({ type: CheapFlightsActions.REQUEST_CHEAP_FLIGHTS });
     this.cheapFlightsService.fetch(from, to, startDate, endDate).subscribe((cheapFlights: CheapFlight[]) => {
-      this.ngRedux.dispatch({ type: CheapFlightsActions.RECEIVE_CHEAP_FLIGHTS, payload: cheapFlights});
+      this.ngRedux.dispatch({ type: CheapFlightsActions.RECEIVE_CHEAP_FLIGHTS, payload: {cheapFlights}});
     });
   }
 }

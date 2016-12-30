@@ -31,7 +31,8 @@ describe('CheapFlightsService', () => {
 
   describe('fetch', () => {
 
-    const flights = [{
+    const flights = [
+      {
         "dateFrom": "2015-01-19T04:19:49.760Z",
         "dateTo": "2015-12-09T08:08:32.239Z",
         "currency": "€",
