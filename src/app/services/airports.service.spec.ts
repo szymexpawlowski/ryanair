@@ -7,7 +7,7 @@ import { AirportsService } from './airports.service';
 
 const url = 'http://dummy-host';
 
-describe('AirportService', () => {
+describe('AirportsService', () => {
 
   beforeEach(() => {
 
