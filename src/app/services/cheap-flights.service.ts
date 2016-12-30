@@ -2,7 +2,7 @@ import { Http, Response } from '@angular/http';
 import { Injectable, Inject } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 
-import CheapFlight from '../models/cheap-flight';
+import { CheapFlight } from '../models';
 import { AppConfig, APP_CONFIG_TOKEN } from '../../../config/config';
 
 @Injectable()

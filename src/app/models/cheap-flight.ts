@@ -1,4 +1,4 @@
-export default class CheapFlight {
+export class CheapFlight {
   constructor(
     public dateFrom: string,
     public dateTo: string,

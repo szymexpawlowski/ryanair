@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import Payload from '../../models/payload';
+import { Payload } from '../../models';
 
 @Component({
   selector: 'search-form',
@@ -12,6 +12,4 @@ export default class SearchFormComponent {
   public onSubmit() {
     this.submitted = true;
   }
-  // TODO: Remove this when we're done
-  get diagnostic() { return JSON.stringify(this.payload); }
 }

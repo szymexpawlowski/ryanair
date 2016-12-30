@@ -1,4 +1,4 @@
-export default class Payload {
+export class Payload {
   constructor(
     public from: string,
     public to: string,
