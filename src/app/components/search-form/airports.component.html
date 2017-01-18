@@ -1,0 +1,17 @@
+<div class="form-group">
+  <label for="autocompleteFrom">From</label>
+  <autocomplete
+    id="autocompleteFrom"
+    (valueChanged)="onFromChanged($event)"
+    [value]="from"
+    [options]="options"></autocomplete>
+</div>
+
+<div class="form-group">
+  <label for="autocompleteTo">To</label>
+  <autocomplete
+    id="autocompleteTo"
+    (valueChanged)="onToChanged($event)"
+    [value]="to"
+    [options]="options | optionFilter:from"></autocomplete>
+</div>

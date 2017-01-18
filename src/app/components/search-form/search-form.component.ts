@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
-import { Payload } from '../../models';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Airport, Option, Payload } from '../../models';
+import { OptionConverterService } from '../../services';
 
 @Component({
   selector: 'search-form',
@@ -7,9 +8,31 @@ import { Payload } from '../../models';
 })
 export default class SearchFormComponent {
 
-  public payload = new Payload('STN', 'DUB', '2014-12-02', '2015-01-02');
-  public submitted = false;
+  @Input() payload: Payload;
+  @Input() airports: Airport[];
+  @Output() private performSearch = new EventEmitter<Payload>();
+
+  private options: Option[] = [];
+
+  constructor(private optionConverterService: OptionConverterService) { }
+
   public onSubmit() {
-    this.submitted = true;
+    // console.log(this.payload);
+    this.performSearch.emit(this.payload);
   }
+
+  ngOnChanges() {
+    if (this.airports.length > 0) {
+      this.options = this.optionConverterService.convert('name', 'iataCode', this.airports);
+    }
+  }
+
+  onFromChanged(value) {
+    this.payload.from = value;
+  }
+
+  onToChanged(value) {
+    this.payload.to = value;
+  }
+
 }
