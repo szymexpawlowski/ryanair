@@ -4,7 +4,7 @@ import { Airport, Option, Payload } from '../../models';
 import { OptionConverterService } from '../../services';
 
 @Component({
-  selector: 'search-form',
+  selector: 'ra-search-form',
   styles: [require('./search-form.component.scss')],
   templateUrl: './search-form.component.html'
 })

@@ -1,11 +1,11 @@
 <div class="container">
   <form (submit)="onSubmit()">
-    <airports
+    <ra-airports
       [options]="options"
       (fromChanged)="onFromChanged($event)"
       (toChanged)="onToChanged($event)"
       [from]="payload?.from"
-      [to]="payload?.to"></airports>
+      [to]="payload?.to"></ra-airports>
 
     <div class="form-group">
       <label for="startDate">Start Date</label>

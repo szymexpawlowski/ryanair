@@ -2,7 +2,7 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { Option } from '../../models';
 
 @Component({
-  selector: 'airports',
+  selector: 'ra-airports',
   templateUrl: './airports.component.html'
 })
 export default class AirportsComponent {

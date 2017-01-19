@@ -8,7 +8,7 @@ import { Option } from '../../models/option';
 import { KEY_ARROW_DOWN, KEY_ARROW_UP, KEY_ESCAPE, KEY_ENTER } from './keys';
 
 @Component({
-  selector: 'autocomplete',
+  selector: 'ra-autocomplete',
   styles: [require('./autocomplete.component.scss')],
   template: `
     <input type="text" class="form-control" [formControl]="input" (blur)="onBlur()" (keydown)="onKeydown($event)" />   

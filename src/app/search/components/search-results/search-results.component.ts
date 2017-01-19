@@ -9,7 +9,7 @@ import { CheapFlight } from '../../models';
 @Component({
   styles: [require('./search-results.component.scss')],
   template: `
-    <search-result *ngFor="let cheapFlight of (cheapFlights$ | async)" [cheapFlight]="cheapFlight" ></search-result>
+    <ra-search-result *ngFor="let cheapFlight of (cheapFlights$ | async)" [cheapFlight]="cheapFlight" ></ra-search-result>
   `
 })
 export default class SearchResultsComponent implements OnInit  {

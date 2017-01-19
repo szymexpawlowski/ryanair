@@ -9,7 +9,7 @@ import { AirportsActions, PayloadActions } from '../../actions';
 @Component({
   styles: [require('./search.component.scss')],
   template: `
-    <search-form (performSearch)="onPerformSearch($event)" [airports]="airports$ | async" [payload]="(payload$ | async)"></search-form>
+    <ra-search-form (performSearch)="onPerformSearch($event)" [airports]="airports$ | async" [payload]="(payload$ | async)"></ra-search-form>
     <router-outlet></router-outlet>
   `
 })
