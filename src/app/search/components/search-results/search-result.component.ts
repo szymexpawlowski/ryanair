@@ -13,5 +13,7 @@ import { CheapFlight } from '../../models';
 })
 export default class SearchResultComponent {
 
+  /* tslint:disable:no-unused-variable */
   @Input() private cheapFlight: CheapFlight;
+  /* tslint:enable:no-unused-variable */
 }

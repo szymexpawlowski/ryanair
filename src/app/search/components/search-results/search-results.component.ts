@@ -20,8 +20,10 @@ import { CheapFlight } from '../../models';
 })
 export default class SearchResultsComponent implements OnInit  {
 
+  /* tslint:disable:no-unused-variable */
   @select(['cheapFlights', 'cheapFlights']) private cheapFlights$: Observable<CheapFlight[]>;
   @select(['cheapFlights', 'loading']) private loading$: Observable<boolean>;
+  /* tslint:enable:no-unused-variable */
 
   constructor(
     private cheapFlightsActions: CheapFlightsActions,
@@ -33,7 +35,7 @@ export default class SearchResultsComponent implements OnInit  {
       .subscribe((params: Params) => {
         const {from, to, startDate, endDate} = params;
         this.cheapFlightsActions.fetch(from, to, startDate, endDate);
-        this.payloadActions.setPayload({from, to, startDate, endDate})
+        this.payloadActions.setPayload({from, to, startDate, endDate});
       });
   }
 }

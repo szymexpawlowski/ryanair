@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'my-app',
+  selector: 'ra-app',
   templateUrl: './app.component.html',
   styles: [require('./app.component.scss')]
 })

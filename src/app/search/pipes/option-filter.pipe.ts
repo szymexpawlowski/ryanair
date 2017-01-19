@@ -2,7 +2,7 @@ import { Injectable, Pipe, PipeTransform } from '@angular/core';
 import { Option } from '../models';
 
 @Pipe({
-  name: 'optionFilter'
+  name: 'raOptionFilter'
 })
 @Injectable()
 export class OptionFilterPipe implements PipeTransform {

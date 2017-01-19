@@ -11,6 +11,18 @@ const INITIAL_STATE: ICheapFlightsState = {
   loading: false
 };
 
+const compareByPrice = (flight1: CheapFlight, flight2: CheapFlight): number => {
+  if (flight1.price < flight2.price) {
+    return -1;
+  }
+
+  if (flight1.price > flight2.price) {
+    return 1;
+  }
+
+  return 0;
+};
+
 export function cheapFlightsReducer(state = INITIAL_STATE, action) {
   switch (action.type) {
     case CheapFlightsActions.REQUEST_CHEAP_FLIGHTS:
@@ -23,15 +35,3 @@ export function cheapFlightsReducer(state = INITIAL_STATE, action) {
       return state;
   }
 }
-
-const compareByPrice = (flight1: CheapFlight, flight2: CheapFlight): number => {
-  if (flight1.price < flight2.price) {
-    return -1;
-  }
-
-  if (flight1.price > flight2.price) {
-    return 1;
-  }
-
-  return 0;
-};

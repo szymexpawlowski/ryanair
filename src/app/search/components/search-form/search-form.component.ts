@@ -1,4 +1,4 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Input, Output, EventEmitter, OnChanges } from '@angular/core';
 
 import { Airport, Option, Payload } from '../../models';
 import { OptionConverterService } from '../../services';
@@ -8,7 +8,7 @@ import { OptionConverterService } from '../../services';
   styles: [require('./search-form.component.scss')],
   templateUrl: './search-form.component.html'
 })
-export default class SearchFormComponent {
+export default class SearchFormComponent implements OnChanges {
 
   @Input() payload: Payload;
   @Input() airports: Airport[];

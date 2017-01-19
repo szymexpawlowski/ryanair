@@ -18,7 +18,7 @@ export default class AirportsComponent {
     this.fromChanged.emit(value);
     if (this.from === this.to) {
       this.to = '';
-      this.toChanged.emit('')
+      this.toChanged.emit('');
     }
   }
 

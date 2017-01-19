@@ -51,7 +51,7 @@ describe('CheapFlightsActions', () => {
   let ngRedux: NgRedux<IAppState>;
   beforeEach(inject([CheapFlightsActions, NgRedux], (...deps) => {
     cheapFlightsActions = deps[0];
-    ngRedux = deps[1]
+    ngRedux = deps[1];
   }));
 
   describe('fetch', () => {
@@ -64,7 +64,9 @@ describe('CheapFlightsActions', () => {
             endDate = '2016-02-02';
       cheapFlightsActions.fetch(from, to, startDate, endDate);
       expect((<any>ngRedux.dispatch).calls.argsFor(0)).toEqual([{type: CheapFlightsActions.REQUEST_CHEAP_FLIGHTS}]);
-      expect((<any>ngRedux.dispatch).calls.argsFor(1)).toEqual([{type: CheapFlightsActions.RECEIVE_CHEAP_FLIGHTS, payload: {cheapFlights}}]);
+      expect((<any>ngRedux.dispatch).calls.argsFor(1)).toEqual([
+        {type: CheapFlightsActions.RECEIVE_CHEAP_FLIGHTS, payload: {cheapFlights}}
+      ]);
     }));
   });
 });

@@ -14,7 +14,10 @@ import { KEY_ARROW_DOWN, KEY_ARROW_UP, KEY_ESCAPE, KEY_ENTER } from './keys';
     <input type="text" class="form-control" [formControl]="input" (blur)="onBlur()" (keydown)="onKeydown($event)" />   
     
     <ul #optionsList *ngIf="isOptionsListVisible()">
-      <li *ngFor="let option of visibleOptions; let i=index" (click)="onOptionClicked(option)" [ngClass]="{active: i === optionsPosition}" >{{ option.label }}</li>
+      <li 
+        *ngFor="let option of visibleOptions; let i=index" 
+        (click)="onOptionClicked(option)" 
+        [ngClass]="{active: i === optionsPosition}" >{{ option.label }}</li>
     </ul>
     <ul *ngIf="isNoOptionsVisible()">
       <li>No options</li>
@@ -114,11 +117,13 @@ export default class AutocompleteComponent implements OnInit, OnChanges, AfterVi
     };
   }
 
+  /* tslint:disable:no-unused-variable */
   private onOptionClicked(option: Option): void {
     this.optionWasClicked = true;
     this.optionsPosition = this.visibleOptions.indexOf(option);
     this.selectValue(option);
   }
+  /* tslint:enable:no-unused-variable */
 
   private selectValue(option: Option): void {
     this.disableValueChange = true;
@@ -130,6 +135,7 @@ export default class AutocompleteComponent implements OnInit, OnChanges, AfterVi
     setTimeout(() => this.disableValueChange = false, 0);
   }
 
+  /* tslint:disable:no-unused-variable */
   private onKeydown(e: KeyboardEvent): void {
 
     const meaningfulKeys = [KEY_ARROW_DOWN, KEY_ARROW_UP, KEY_ESCAPE, KEY_ENTER];
@@ -154,6 +160,7 @@ export default class AutocompleteComponent implements OnInit, OnChanges, AfterVi
       }
     }
   }
+  /* tslint:enable:no-unused-variable */
 
   private handleArrows(keyCode) {
     if (this.optionsListVisible === false) {
@@ -177,6 +184,7 @@ export default class AutocompleteComponent implements OnInit, OnChanges, AfterVi
     }
   }
 
+  /* tslint:disable:no-unused-variable */
   private onBlur(): void {
     // Timeout is used because onBlur is triggered before click on option
     setTimeout(() => {
@@ -189,19 +197,20 @@ export default class AutocompleteComponent implements OnInit, OnChanges, AfterVi
         }
       }
       this.optionWasClicked = false;
-      this.hideOptionsList()
+      this.hideOptionsList();
     }, 150);
   }
 
-  private escapeRegExp(text) {
-    return text.replace(/[\-\[\]\/\{\}\(\)\*\+\?\.\\\^\$\|]/g, "\\$&");
-  }
-
-  private isOptionsListVisible() {
+  private isOptionsListVisible(): boolean {
     return this.optionsListVisible && this.visibleOptions.length > 0;
   }
 
-  private isNoOptionsVisible() {
+  private isNoOptionsVisible(): boolean {
     return this.optionsListVisible && this.visibleOptions.length === 0;
+  }
+  /* tslint:enable:no-unused-variable */
+
+  private escapeRegExp(text): string {
+    return text.replace(/[\-\[\]\/\{\}\(\)\*\+\?\.\\\^\$\|]/g, '\\$&');
   }
 }
