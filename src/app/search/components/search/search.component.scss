@@ -4,15 +4,16 @@
   flex-wrap: wrap;
 
   @media (max-width: 768px) {
-    search-form {
+    ra-search-form {
       width: 100%;
       margin: 0 0 1rem 0;
     }
   }
 
   @media (min-width: 769px) {
-    search-form {
+    ra-search-form {
       width: 25%;
+      margin: 0 1rem 0 0;
     }
   }
 }
