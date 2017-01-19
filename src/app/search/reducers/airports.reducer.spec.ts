@@ -1,5 +1,5 @@
 import { airportsReducer } from './airports.reducer';
-import { AirportsActions } from '../actions';
+import { AirportsActions } from './.';
 
 const airports = [
   {

@@ -1,5 +1,5 @@
 import { cheapFlightsReducer } from './cheap-flights.reducer';
-import { CheapFlightsActions } from '../actions';
+import { CheapFlightsActions } from './.';
 
 const cheapFlights = [
   {

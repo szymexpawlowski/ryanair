@@ -1,9 +1,9 @@
 import { Http, Response, Headers } from '@angular/http';
 import { Injectable, Inject } from '@angular/core';
-import 'rxjs/add/operator/map';
+import { Observable } from 'rxjs/Observable';
 
-// import Airport from '../models/airport';
-import { AppConfig, APP_CONFIG_TOKEN } from '../../../config/config';
+import { Airport } from '../models';
+import { AppConfig, APP_CONFIG_TOKEN } from '../../../../config/config';
 
 @Injectable()
 export class AirportsService {
@@ -14,7 +14,7 @@ export class AirportsService {
     this.apiUrl = config.apiUrls.airports;
   }
 
-  public fetch() {
+  public fetch(): Observable<Airport[]> {
     const headers = new Headers();
     headers.append('Content-Type', 'application/json');
     return this.http.get(this.apiUrl, {headers})

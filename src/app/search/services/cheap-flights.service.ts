@@ -3,7 +3,7 @@ import { Injectable, Inject } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 
 import { CheapFlight } from '../models';
-import { AppConfig, APP_CONFIG_TOKEN } from '../../../config/config';
+import { AppConfig, APP_CONFIG_TOKEN } from '../../../../config/config';
 
 @Injectable()
 export class CheapFlightsService {
