@@ -5,6 +5,7 @@ import { OptionConverterService } from '../../services';
 
 @Component({
   selector: 'search-form',
+  styles: [require('./search-form.component.scss')],
   templateUrl: './search-form.component.html'
 })
 export default class SearchFormComponent {

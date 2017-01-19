@@ -7,6 +7,7 @@ import { CheapFlightsActions, PayloadActions } from '../../actions';
 import { CheapFlight } from '../../models';
 
 @Component({
+  styles: [require('./search-results.component.scss')],  
   template: `
     <h1>SearchResultsComponent</h1>
     <div *ngFor="let cheapFlight of (cheapFlights$ | async)">

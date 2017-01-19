@@ -3,10 +3,11 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { select } from 'ng2-redux';
 import { Observable } from 'rxjs';
 
-import { Airport, Payload} from '../models';
-import { AirportsActions, PayloadActions } from '../actions';
+import { Airport, Payload} from '../../models';
+import { AirportsActions, PayloadActions } from '../../actions';
 
 @Component({
+  styles: [require('./search.component.scss')],
   template: `
     <search-form (performSearch)="onPerformSearch($event)" [airports]="airports$ | async" [payload]="(payload$ | async)"></search-form>
     <router-outlet></router-outlet>

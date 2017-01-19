@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule }   from '@angular/forms';
 import { HttpModule }   from '@angular/http';
 
-import SearchComponent from './components/search.component';
+import SearchComponent from './components/search/search.component';
 import SearchRoutingModule  from './search-routing.module';
 import SearchResultsComponent  from './components/search-results/search-results.component';
 import SearchFormComponent  from './components/search-form/search-form.component';

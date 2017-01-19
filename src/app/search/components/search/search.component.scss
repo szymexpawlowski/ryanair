@@ -1,0 +1,16 @@
+:host {
+
+  display: flex;
+  flex-wrap: wrap;
+
+  @media (max-width: 768px) {
+    search-form {
+      width: 100%;
+    }
+  }
+  @media (min-width: 769px) {
+    search-form {
+      width: 33%;
+    }
+  }
+}
