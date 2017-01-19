@@ -3,19 +3,22 @@ import { CheapFlight } from '../models';
 
 export interface ICheapFlightsState {
   cheapFlights: CheapFlight[];
+  loading: boolean;
 }
 
 const INITIAL_STATE: ICheapFlightsState = {
-  cheapFlights: []
+  cheapFlights: [],
+  loading: false
 };
 
 export function cheapFlightsReducer(state = INITIAL_STATE, action) {
   switch (action.type) {
     case CheapFlightsActions.REQUEST_CHEAP_FLIGHTS:
-      return state;
+      return Object.assign(state, {loading: true});
     case CheapFlightsActions.RECEIVE_CHEAP_FLIGHTS:
-      const cheapFlights = action.payload.cheapFlights.sort(compareByPrice)
-      return Object.assign(state, {cheapFlights});
+      const cheapFlights = action.payload.cheapFlights.sort(compareByPrice);
+      const loading = false;
+      return Object.assign(state, {cheapFlights, loading});
     default:
       return state;
   }

@@ -9,12 +9,19 @@ import { CheapFlight } from '../../models';
 @Component({
   styles: [require('./search-results.component.scss')],
   template: `
-    <ra-search-result *ngFor="let cheapFlight of (cheapFlights$ | async)" [cheapFlight]="cheapFlight" ></ra-search-result>
+    <div *ngIf="(loading$ | async) === true" class="spinner-container">
+      <div class="plane-spinner"></div>
+    </div>
+    <div *ngIf="(loading$ | async) === false">
+      <ra-search-result *ngFor="let cheapFlight of (cheapFlights$ | async)" [cheapFlight]="cheapFlight" ></ra-search-result>
+      <p *ngIf="(cheapFlights$ | async).length === 0">No flights found!</p>
+    </div>
   `
 })
 export default class SearchResultsComponent implements OnInit  {
 
   @select(['cheapFlights', 'cheapFlights']) private cheapFlights$: Observable<CheapFlight[]>;
+  @select(['cheapFlights', 'loading']) private loading$: Observable<boolean>;
 
   constructor(
     private cheapFlightsActions: CheapFlightsActions,
