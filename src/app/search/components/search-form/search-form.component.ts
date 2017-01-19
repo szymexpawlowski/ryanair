@@ -1,4 +1,5 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
+
 import { Airport, Option, Payload } from '../../models';
 import { OptionConverterService } from '../../services';
 
@@ -17,7 +18,6 @@ export default class SearchFormComponent {
   constructor(private optionConverterService: OptionConverterService) { }
 
   public onSubmit() {
-    // console.log(this.payload);
     this.performSearch.emit(this.payload);
   }
 
@@ -27,12 +27,11 @@ export default class SearchFormComponent {
     }
   }
 
-  onFromChanged(value) {
+  onFromChanged(value: string): void {
     this.payload.from = value;
   }
 
-  onToChanged(value) {
+  onToChanged(value: string): void {
     this.payload.to = value;
   }
-
 }

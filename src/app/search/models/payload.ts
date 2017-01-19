@@ -1,8 +1,6 @@
-export class Payload {
-  constructor(
-    public from: string,
-    public to: string,
-    public startDate: string,
-    public endDate: string
-  ) {  }
+export interface Payload {
+  from: string;
+  to: string;
+  startDate: string;
+  endDate: string;
 }

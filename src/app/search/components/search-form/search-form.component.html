@@ -4,8 +4,8 @@
       [options]="options"
       (fromChanged)="onFromChanged($event)"
       (toChanged)="onToChanged($event)"
-      [from]="payload.from"
-      [to]="payload.to"></airports>
+      [from]="payload?.from"
+      [to]="payload?.to"></airports>
 
     <div class="form-group">
       <label for="startDate">Start Date</label>

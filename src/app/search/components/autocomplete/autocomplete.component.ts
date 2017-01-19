@@ -12,7 +12,7 @@ import { KEY_ARROW_DOWN, KEY_ARROW_UP, KEY_ESCAPE, KEY_ENTER } from './keys';
   styles: [require('./autocomplete.component.scss')],
   template: `
     <div>
-      <input type="text" class="form-control" [formControl]="input" (blur)="onBlur()" (keydown)="onKey($event)" />   
+      <input type="text" class="form-control" [formControl]="input" (blur)="onBlur()" (keydown)="onKeydown($event)" />   
       
       <ul #optionsList *ngIf="isOptionsListVisible()">
         <li *ngFor="let option of visibleOptions; let i=index" (click)="onOptionClicked(option)" [ngClass]="{active: i === optionsPosition}" >{{ option.label }}</li>
@@ -51,8 +51,25 @@ export default class AutocompleteComponent implements OnInit, OnChanges, AfterVi
   }
 
   ngOnChanges(changes: SimpleChanges) {
+
+    // when value is set in parent component
+    if (changes['options'] && !changes['options'].isFirstChange()) {
+      this.disableValueChange = true;
+      const matchingOption = this.options.find(o => o.value === this.value);
+      if (!matchingOption) {
+        this.input.setValue('');
+        this.visibleOptions = this.options.slice();
+      } else {
+        this.input.setValue(matchingOption.label);
+        this.visibleOptions = this.options.filter(this.filterVisibleOptions(matchingOption.label));
+      }
+
+      setTimeout(() => this.disableValueChange = false, 0);
+    }
+
+    // only proper values will be set
     if (changes['value'] && !changes['value'].isFirstChange()) {
-      const matchingOption = this.options.find(o => o.value === changes['value'].currentValue);
+      const matchingOption = this.options.find(o => o.value === this.value);
       if (!matchingOption) {
         this.input.setValue('');
       }
@@ -115,7 +132,7 @@ export default class AutocompleteComponent implements OnInit, OnChanges, AfterVi
     setTimeout(() => this.disableValueChange = false, 0);
   }
 
-  private onKey(e: KeyboardEvent): void {
+  private onKeydown(e: KeyboardEvent): void {
 
     const meaningfulKeys = [KEY_ARROW_DOWN, KEY_ARROW_UP, KEY_ESCAPE, KEY_ENTER];
     if (!meaningfulKeys.includes(e.keyCode)) {

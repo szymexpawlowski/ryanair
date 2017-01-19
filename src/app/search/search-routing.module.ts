@@ -10,7 +10,7 @@ const searchRoutes: Routes = [
     component: SearchComponent,
     children: [
       {
-        path: 'search-results',
+        path: ':from/:to/:startDate/:endDate',
         component: SearchResultsComponent
       }
     ]

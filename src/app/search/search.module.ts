@@ -8,7 +8,7 @@ import SearchRoutingModule  from './search-routing.module';
 import SearchResultsComponent  from './components/search-results/search-results.component';
 import SearchFormComponent  from './components/search-form/search-form.component';
 import { AirportsService, CheapFlightsService, OptionConverterService } from './services';
-import { AirportsActions, CheapFlightsActions } from './actions';
+import { AirportsActions, CheapFlightsActions, PayloadActions } from './actions';
 import { OptionFilterPipe } from './pipes';
 import Autocomplete from './components/autocomplete/autocomplete.component';
 import AirportsComponent from './components/search-form/airports.component';
@@ -34,6 +34,7 @@ import AirportsComponent from './components/search-form/airports.component';
     AirportsActions,
     CheapFlightsService,
     CheapFlightsActions,
+    PayloadActions,
     OptionConverterService
   ],
   bootstrap: [ SearchComponent ]

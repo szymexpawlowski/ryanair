@@ -1,32 +1,35 @@
 import { Component, OnInit } from '@angular/core';
+import { Router, ActivatedRoute } from '@angular/router';
 import { select } from 'ng2-redux';
 import { Observable } from 'rxjs';
 
-import { Airport, CheapFlight, Payload} from '../models';
-import { AirportsActions, CheapFlightsActions } from '../actions';
+import { Airport, Payload} from '../models';
+import { AirportsActions, PayloadActions } from '../actions';
 
 @Component({
   template: `
-    <search-form (performSearch)="onPerformSearch($event)" [airports]="airports$ | async" [payload]="payload"></search-form>
+    <search-form (performSearch)="onPerformSearch($event)" [airports]="airports$ | async" [payload]="(payload$ | async)"></search-form>
     <router-outlet></router-outlet>
   `
 })
 export default class SearchComponent implements OnInit {
 
-  public payload = new Payload('', '', '2014-12-02', '2015-01-02');
-
   @select(['airports', 'airports']) private airports$: Observable<Airport[]>;
-  @select(['cheapFlights', 'cheapFlights']) private cheapFlights$: Observable<CheapFlight[]>;
+  @select(['payload', 'payload']) private payload$: Observable<Payload>;
 
-  constructor(private airportsActions: AirportsActions, private cheapFlightsActions: CheapFlightsActions) { }
+  constructor(
+    private airportsActions: AirportsActions,
+    private payloadActions: PayloadActions,
+    private router: Router,
+    private route: ActivatedRoute) { }
 
   ngOnInit() {
     this.airportsActions.fetch();
   }
 
   onPerformSearch(payload: Payload) {
-    console.log('PerformSearch');
-    // const {from, to, startDate, endDate} = payload;
-    // this.cheapFlightsActions.fetch(from, to, startDate, endDate)
+    const {from, to, startDate, endDate} = payload;
+    this.payloadActions.setPayload(payload);
+    this.router.navigate([from, to, startDate, endDate], { relativeTo: this.route });
   }
 }
