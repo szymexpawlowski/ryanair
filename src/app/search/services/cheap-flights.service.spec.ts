@@ -2,7 +2,7 @@ import { inject, TestBed } from '@angular/core/testing';
 import { HttpModule, Http, BaseRequestOptions, ResponseOptions, Response } from '@angular/http';
 import { MockBackend } from '@angular/http/testing';
 
-import { APP_CONFIG_TOKEN } from '../../../config/config';
+import { APP_CONFIG_TOKEN } from '../../../../config/config';
 import { CheapFlightsService } from './cheap-flights.service';
 
 const url = 'http://dummy-host/';
@@ -33,16 +33,16 @@ describe('CheapFlightsService', () => {
 
     const flights = [
       {
-        "dateFrom": "2015-01-19T04:19:49.760Z",
-        "dateTo": "2015-12-09T08:08:32.239Z",
-        "currency": "€",
-        "price": 16.36174404900521
+        'dateFrom': '2015-01-19T04:19:49.760Z',
+        'dateTo': '2015-12-09T08:08:32.239Z',
+        'currency': '€',
+        'price': 16.36174404900521
       },
       {
-        "dateFrom": "2014-12-12T22:11:00.608Z",
-        "dateTo": "2015-07-08T18:59:12.103Z",
-        "currency": "€",
-        "price": 75.4496027706191
+        'dateFrom': '2014-12-12T22:11:00.608Z',
+        'dateTo': '2015-07-08T18:59:12.103Z',
+        'currency': '€',
+        'price': 75.4496027706191
       }
     ];
     const mockedResponse = { flights };

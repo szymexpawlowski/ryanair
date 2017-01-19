@@ -1,35 +1,35 @@
 import { airportsReducer } from './airports.reducer';
-import { AirportsActions } from './.';
+import { AirportsActions } from '../actions';
 
 const airports = [
   {
-    "iataCode": "AAR",
-    "name": "Aarhus",
-    "base": false,
-    "latitude": 56.3,
-    "longitude": 10.619,
-    "country": {
-      "code": "dk",
-      "name": "Denmark",
-      "seoName": "denmark",
-      "englishSeoName": "denmark",
-      "currency": "DKK",
-      "url": "denmark"
+    'iataCode': 'AAR',
+    'name': 'Aarhus',
+    'base': false,
+    'latitude': 56.3,
+    'longitude': 10.619,
+    'country': {
+      'code': 'dk',
+      'name': 'Denmark',
+      'seoName': 'denmark',
+      'englishSeoName': 'denmark',
+      'currency': 'DKK',
+      'url': 'denmark'
     }
   },
   {
-    "iataCode": "AGA",
-    "name": "Agadir",
-    "base": false,
-    "latitude": 30.325,
-    "longitude": -9.41307,
-    "country": {
-      "code": "ma",
-      "name": "Morocco",
-      "seoName": "morocco",
-      "englishSeoName": "morocco",
-      "currency": "MAD",
-      "url": "morocco"
+    'iataCode': 'AGA',
+    'name': 'Agadir',
+    'base': false,
+    'latitude': 30.325,
+    'longitude': -9.41307,
+    'country': {
+      'code': 'ma',
+      'name': 'Morocco',
+      'seoName': 'morocco',
+      'englishSeoName': 'morocco',
+      'currency': 'MAD',
+      'url': 'morocco'
     }
   }
 ];

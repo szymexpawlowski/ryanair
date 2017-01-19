@@ -11,6 +11,6 @@ export class PayloadActions {
   constructor (private ngRedux: NgRedux<IAppState>) { }
 
   setPayload(newPayload: Payload): void {
-    this.ngRedux.dispatch({ type: PayloadActions.SET_PAYLOAD, payload: {payload: newPayload} });
+    this.ngRedux.dispatch({type: PayloadActions.SET_PAYLOAD, payload: {payload: newPayload}});
   }
 }
