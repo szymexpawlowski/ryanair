@@ -11,16 +11,14 @@ import { KEY_ARROW_DOWN, KEY_ARROW_UP, KEY_ESCAPE, KEY_ENTER } from './keys';
   selector: 'autocomplete',
   styles: [require('./autocomplete.component.scss')],
   template: `
-    <div>
-      <input type="text" class="form-control" [formControl]="input" (blur)="onBlur()" (keydown)="onKeydown($event)" />   
-      
-      <ul #optionsList *ngIf="isOptionsListVisible()">
-        <li *ngFor="let option of visibleOptions; let i=index" (click)="onOptionClicked(option)" [ngClass]="{active: i === optionsPosition}" >{{ option.label }}</li>
-      </ul>
-      <ul *ngIf="isNoOptionsVisible()">
-        <li>No options</li>
-      </ul>
-    </div>
+    <input type="text" class="form-control" [formControl]="input" (blur)="onBlur()" (keydown)="onKeydown($event)" />   
+    
+    <ul #optionsList *ngIf="isOptionsListVisible()">
+      <li *ngFor="let option of visibleOptions; let i=index" (click)="onOptionClicked(option)" [ngClass]="{active: i === optionsPosition}" >{{ option.label }}</li>
+    </ul>
+    <ul *ngIf="isNoOptionsVisible()">
+      <li>No options</li>
+    </ul>
   `
 })
 export default class AutocompleteComponent implements OnInit, OnChanges, AfterViewChecked {
