@@ -7,12 +7,9 @@ import { CheapFlightsActions, PayloadActions } from '../../actions';
 import { CheapFlight } from '../../models';
 
 @Component({
-  styles: [require('./search-results.component.scss')],  
+  styles: [require('./search-results.component.scss')],
   template: `
-    <h1>SearchResultsComponent</h1>
-    <div *ngFor="let cheapFlight of (cheapFlights$ | async)">
-      {{ cheapFlight.price }}    
-    </div>
+    <search-result *ngFor="let cheapFlight of (cheapFlights$ | async)" [cheapFlight]="cheapFlight" ></search-result>
   `
 })
 export default class SearchResultsComponent implements OnInit  {

@@ -1,8 +1,21 @@
+@import '../../variables.scss';
+
 :host {
 
   display: block;
+  border: $container-border;
+  border-radius: $container-border-radius;
+  background: $container-background;
+  padding: 1rem;
+  margin-right: 1rem;
 
   .container {
     width: 100%;
+  }
+
+  button {
+    background: $action-color;
+    color: #000;
+    font-weight: bold;
   }
 }

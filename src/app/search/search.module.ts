@@ -5,6 +5,7 @@ import { HttpModule }   from '@angular/http';
 
 import SearchComponent from './components/search/search.component';
 import SearchRoutingModule  from './search-routing.module';
+import SearchResultComponent  from './components/search-results/search-result.component';
 import SearchResultsComponent  from './components/search-results/search-results.component';
 import SearchFormComponent  from './components/search-form/search-form.component';
 import { AirportsService, CheapFlightsService, OptionConverterService } from './services';
@@ -26,6 +27,7 @@ import AirportsComponent from './components/search-form/airports.component';
     AirportsComponent,
     SearchComponent,
     SearchFormComponent,
+    SearchResultComponent,
     SearchResultsComponent,
     OptionFilterPipe
   ],
