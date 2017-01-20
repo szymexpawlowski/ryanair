@@ -49,9 +49,9 @@ describe('CheapFlightsActions', () => {
 
   let cheapFlightsActions: CheapFlightsActions;
   let ngRedux: NgRedux<IAppState>;
-  beforeEach(inject([CheapFlightsActions, NgRedux], (...deps) => {
-    cheapFlightsActions = deps[0];
-    ngRedux = deps[1];
+  beforeEach(inject([CheapFlightsActions, NgRedux], (_cheapFlightsActions, _ngRedux) => {
+    cheapFlightsActions = _cheapFlightsActions;
+    ngRedux = _ngRedux;
   }));
 
   describe('fetch', () => {
