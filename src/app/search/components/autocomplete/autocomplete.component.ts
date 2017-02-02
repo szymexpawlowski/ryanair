@@ -11,12 +11,12 @@ import { KEY_ARROW_DOWN, KEY_ARROW_UP, KEY_ESCAPE, KEY_ENTER } from './keys';
   selector: 'ra-autocomplete',
   styles: [require('./autocomplete.component.scss')],
   template: `
-    <input type="text" class="form-control" [formControl]="input" (blur)="onBlur()" (keydown)="onKeydown($event)" />   
-    
+    <input type="text" class="form-control" [formControl]="input" (blur)="onBlur()" (keydown)="onKeydown($event)" />
+
     <ul #optionsList *ngIf="isOptionsListVisible()">
-      <li 
-        *ngFor="let option of visibleOptions; let i=index" 
-        (click)="onOptionClicked(option)" 
+      <li
+        *ngFor="let option of visibleOptions; let i=index"
+        (click)="onOptionClicked(option)"
         [ngClass]="{active: i === optionsPosition}" >{{ option.label }}</li>
     </ul>
     <ul *ngIf="isNoOptionsVisible()">
@@ -34,7 +34,6 @@ export default class AutocompleteComponent implements OnInit, OnChanges, AfterVi
   private optionWasClicked = false;
   private optionsListVisible = false;
   private optionsPosition = 0;
-  private disableValueChange = false;
   private visibleOptions: Option[] = [];
   private input = new FormControl();
 
@@ -45,7 +44,6 @@ export default class AutocompleteComponent implements OnInit, OnChanges, AfterVi
 
     this.input.valueChanges
       .do(this.hideOptionsList)
-      .filter(this.filterDisableValueChange)
       .filter(this.filterInputLength)
       .debounceTime(250)
       .subscribe(this.subscribeValueChange);
@@ -55,17 +53,14 @@ export default class AutocompleteComponent implements OnInit, OnChanges, AfterVi
 
     // when value is set in parent component
     if (changes['options'] && !changes['options'].isFirstChange()) {
-      this.disableValueChange = true;
       const matchingOption = this.options.find(o => o.value === this.value);
       if (!matchingOption) {
-        this.input.setValue('');
+        this.input.setValue('', {emitEvent: false});
         this.visibleOptions = this.options.slice();
       } else {
-        this.input.setValue(matchingOption.label);
+        this.input.setValue(matchingOption.label, {emitEvent: false});
         this.visibleOptions = this.options.filter(this.filterVisibleOptions(matchingOption.label));
       }
-
-      setTimeout(() => this.disableValueChange = false, 0);
     }
 
     // only proper values will be set
@@ -95,10 +90,6 @@ export default class AutocompleteComponent implements OnInit, OnChanges, AfterVi
     return text.length > 0;
   };
 
-  private filterDisableValueChange = (): boolean => {
-    return this.disableValueChange === false;
-  };
-
   private subscribeValueChange = (text: string): void => {
     this.visibleOptions = this.options.filter(this.filterVisibleOptions(text));
     if (this.visibleOptions.length === 0) {
@@ -126,13 +117,10 @@ export default class AutocompleteComponent implements OnInit, OnChanges, AfterVi
   /* tslint:enable:no-unused-variable */
 
   private selectValue(option: Option): void {
-    this.disableValueChange = true;
     this.hideOptionsList();
-    this.input.setValue(option.label);
+    this.input.setValue(option.label, {emitEvent: false});
     this.valueChanged.emit(option.value);
     this.visibleOptions = this.options.filter(this.filterVisibleOptions(option.label));
-
-    setTimeout(() => this.disableValueChange = false, 0);
   }
 
   /* tslint:disable:no-unused-variable */
